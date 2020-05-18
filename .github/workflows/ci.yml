@@ -101,7 +101,7 @@ jobs:
           command: fmt
           args: --all -- --check
 
-  clippy:
+  clippy-annotations:
     name: Clippy
     runs-on: ubuntu-latest
     strategy:
@@ -118,4 +118,23 @@ jobs:
       - uses: actions-rs/clippy@master
         with:
           command: clippy
-          args: --all-features --all-targets
+          args: --all-features -- -D warnings
+
+  clippy-errors:
+    name: Clippy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust:
+          - stable
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.rust }}
+          override: true
+      - run: rustup component add clippy
+      - uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --all-targets --all-features -- -D warnings
