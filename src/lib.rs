@@ -15,9 +15,32 @@
 //! }
 //! ```
 //!
-//! [`eyre::EyreContext`]: https://docs.rs/eyre/0.3.8/eyre/trait.EyreContext.html
+//! [`eyre::EyreContext`]: https://docs.rs/eyre/*/eyre/trait.EyreContext.html
 //! [`eyre`]: https://docs.rs/eyre
-//! [`backtrace::Backtrace`]: https://docs.rs/backtrace/0.3.46/backtrace/struct.Backtrace.html
+#![doc(html_root_url = "https://docs.rs/simple-eyre/0.2.0")]
+#![warn(
+    missing_debug_implementations,
+    missing_docs,
+    missing_doc_code_examples,
+    rust_2018_idioms,
+    unreachable_pub,
+    bad_style,
+    const_err,
+    dead_code,
+    improper_ctypes,
+    non_shorthand_field_patterns,
+    no_mangle_generic_items,
+    overflowing_literals,
+    path_statements,
+    patterns_in_fns_without_body,
+    private_in_public,
+    unconditional_recursion,
+    unused,
+    unused_allocation,
+    unused_comparisons,
+    unused_parens,
+    while_true
+)]
 use eyre::Chain;
 use eyre::EyreContext;
 use indenter::indented;
@@ -30,7 +53,7 @@ pub struct Context;
 impl EyreContext for Context {
     #[allow(unused_variables)]
     fn default(error: &(dyn Error + 'static)) -> Self {
-        Self
+        return Self;
     }
 
     fn debug(
@@ -63,12 +86,12 @@ impl EyreContext for Context {
     }
 }
 
-/// A type alias for `eyre::Report<stable_eyre::Context>`
+/// A type alias for `eyre::Report<simple_eyre::Context>`
 ///
 /// # Example
 ///
 /// ```rust
-/// use stable_eyre::Report;
+/// use simple_eyre::Report;
 ///
 /// # struct Config;
 /// fn try_thing(path: &str) -> Result<Config, Report> {
@@ -78,12 +101,12 @@ impl EyreContext for Context {
 /// ```
 pub type Report = eyre::Report<Context>;
 
-/// A type alias for `Result<T, stable_eyre::Report>`
+/// A type alias for `Result<T, simple_eyre::Report>`
 ///
 /// # Example
 ///
 ///```
-/// fn main() -> stable_eyre::Result<()> {
+/// fn main() -> simple_eyre::Result<()> {
 ///
 ///     // ...
 ///
