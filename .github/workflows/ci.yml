@@ -19,6 +19,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: ${{ matrix.rust }}
+          override: true
       - uses: actions-rs/cargo@v1
         with:
           command: check
@@ -31,6 +32,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          override: true
       - uses: actions-rs/cargo@v1
         with:
           command: test
@@ -58,6 +60,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: ${{ matrix.rust }}
+          override: true
       - uses: actions-rs/cargo@v1
         with:
           command: test
@@ -73,6 +76,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          override: true
           profile: minimal
       - uses: actions-rs/cargo@v1
         with:
@@ -90,6 +94,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: ${{ matrix.rust }}
+          override: true
       - run: rustup component add rustfmt
       - uses: actions-rs/cargo@v1
         with:
@@ -108,6 +113,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: ${{ matrix.rust }}
+          override: true
           components: clippy
       - uses: actions-rs/clippy@master
         with:
