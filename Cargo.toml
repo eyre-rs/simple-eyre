@@ -17,5 +17,5 @@ inner error boxed as a trait object and a context with only a Backtrace
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-eyre-impl = "0.1.0"
-thiserror = "1.0.10"
+eyre = "0.4.2"
+indenter = "0.3.0"
