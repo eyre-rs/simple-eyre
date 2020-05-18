@@ -53,7 +53,7 @@ pub struct Context;
 impl EyreContext for Context {
     #[allow(unused_variables)]
     fn default(error: &(dyn Error + 'static)) -> Self {
-        return Self;
+        Self
     }
 
     fn debug(
